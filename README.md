@@ -1,4 +1,4 @@
-# ReqRes Project
+# ResReq Project
 
 This project gets and posts requests to ResReq.in API
 
