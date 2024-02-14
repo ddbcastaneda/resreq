@@ -21,8 +21,7 @@ type TRegistrationInput = {
 };
 
 const cache = new NodeCache({ stdTTL: 120 });
-const apiUrl = process.env.REQRES_API_URL || "https://reqress.in/api/users";
-console.log("apiUrl", apiUrl);
+const apiUrl = process.env.REQRES_API_URL || "https://reqres.in/api/users";
 
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const page: number = Number(req.query.page) || 1;
