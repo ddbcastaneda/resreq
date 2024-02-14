@@ -21,13 +21,13 @@ const RegistrationForm = ({ onNewUser }: TRegistrationFormProps) => {
   const lastNameRef = useRef<HTMLInputElement>(null);
   const jobRef = useRef<HTMLInputElement>(null);
 
-  const [error, setError] = useState<TError | undefined>();
+  const [error, setError] = useState<TError | null>(null);
 
   const verifyInput = ({
     firstName,
     lastName,
     job,
-  }: TRegistrationInput): void => {
+  }: TRegistrationInput): boolean => {
     if (!firstName || !lastName || !job) {
       const message = "This cannot be empty";
       let field = "";
@@ -37,6 +37,10 @@ const RegistrationForm = ({ onNewUser }: TRegistrationFormProps) => {
       if (!firstName) field = "firstName";
 
       setError({ message, field });
+      return false;
+    } else {
+      setError(null);
+      return true;
     }
   };
 
@@ -47,9 +51,8 @@ const RegistrationForm = ({ onNewUser }: TRegistrationFormProps) => {
     const job = jobRef.current?.value;
 
     const user = { firstName, lastName, job };
-    verifyInput(user);
-
-    if (!error) onNewUser(user);
+    const verified = verifyInput(user);
+    if (verified) onNewUser(user);
   };
 
   return (
