@@ -66,7 +66,6 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
     lastName: last_name,
     job,
   }: TRegistrationInput = req.body;
-  console.log("req.body", req.body);
   if (!first_name || !last_name || !job) {
     throw new AppError(
       "First name, last name, and job are required fields",

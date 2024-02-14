@@ -28,8 +28,6 @@ export const globalErrorHandler = (
   res: Response,
   next: NextFunction
 ): void => {
-  console.log("global error handler");
-
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
 
