@@ -10,12 +10,16 @@ npm
 ## Setup:
 
 1. Navigate to the project directory:
-   `cd back-end`
+```bash
+cd back-end
+```
 
-2. Install the dependencies:
-   `npm install`
+3. Install the dependencies:
+```bash
+npm install
+```
 
-3. Create a .env file and paste these settings in
+5. Create a .env file and paste these settings in
 
 ```bash
 NODE_ENV=development
@@ -33,4 +37,6 @@ Production Mode:
 In `production` mode, errors return minimal details
 
 4. Run the Project
-   `npm run start`
+```bash
+npm run start
+```
