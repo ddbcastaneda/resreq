@@ -12,8 +12,6 @@ type TUserData = {
   avatar: string;
 };
 
-type TCreateUserData = Omit<TUserData, "id">;
-
 type TRegistrationInput = {
   firstName: string;
   lastName: string;
@@ -23,6 +21,7 @@ type TRegistrationInput = {
 const cache = new NodeCache({ stdTTL: 120 });
 const apiUrl = process.env.REQRES_API_URL || "https://reqres.in/api/users";
 
+// GET ALL USERS
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const page: number = Number(req.query.page) || 1;
   const per_page: number = Number(req.query.per_page) || 6;
@@ -43,6 +42,7 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   res.status(200).json({ status: "success", data: users });
 });
 
+// GET USER
 const getUser = catchAsync(async (req: Request, res: Response) => {
   const userId: number = Number(req.params.id);
   const cacheKey: string = `user_${userId}`;
@@ -60,6 +60,7 @@ const getUser = catchAsync(async (req: Request, res: Response) => {
   res.status(200).json({ status: "success", data: userData });
 });
 
+// CREATE USER
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const {
     firstName: first_name,

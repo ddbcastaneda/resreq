@@ -23,3 +23,4 @@ app.listen(port, () => {
 });
 
 app.use(globalErrorHandler);
+export default app;
